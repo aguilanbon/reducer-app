@@ -19,6 +19,8 @@ function App() {
     switch (action.type) {
       case 'increment':
         return { count: state.count + 1 }
+      case 'decrement':
+        return { count: state.count - 1 }
       default:
         return state
     }
@@ -28,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <button>decrement</button>
+      <button onClick={() => dispatch({ type: 'decrement' }) }>decrement</button>
       <h1 className='text-red-500' >{state.count}</h1>
       <button onClick={() => dispatch({type: 'increment'})}>increment</button>
     </div>
