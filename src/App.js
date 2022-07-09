@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useReducer } from 'react';
 import './index.css';
+import TodoCard from './TodoCard';
 
 function App() {
 
@@ -22,7 +23,6 @@ function App() {
 
   const [state, dispatch] = useReducer(reducer, [])
 
-  console.log(state)
   return (
     <div className="w-screen">
       <div className='flex flex-col w-full items-center justify-center'>
@@ -31,12 +31,8 @@ function App() {
           <button onClick={handleSubmit}>Submit</button>
         </div>
         <div className='w-96 flex flex-col m-8'>
-            <h1>Your Todos</h1>
-            {state.map(userTodo => (
-              <div key={userTodo.id}>
-                <p>{userTodo.name}</p>
-              </div>
-            ))}
+            <h1 className='font-bold'>Your Todos</h1>
+            <TodoCard state={state} />
         </div>
       </div>
     </div>
