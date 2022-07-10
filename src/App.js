@@ -38,8 +38,8 @@ function App() {
     <div className="w-screen">
       <div className='flex flex-col w-full items-center justify-center'>
         <div className='w-96 flex flex-col mt-20'>
-          <input className='border-b-2 border-green-400 focus:outline-none  p-1' type="text" name='name' placeholder='name' value={todo}  onChange={(e) => setTodo(e.target.value)} />
-          <button onClick={handleSubmit}>Submit</button>
+          <input className='border-b-2 border-green-400 focus:outline-none  p-1' type="text" name='name' placeholder='name of todo' value={todo}  onChange={(e) => setTodo(e.target.value)} />
+          <button className='bg-green-400 hover:bg-green-500 text-white mt-4 rounded-md py-2' onClick={handleSubmit}>Submit</button>
         </div>
         <div className='w-96 flex flex-col m-8'>
             <h1 className='font-bold'>Your Todos</h1>
