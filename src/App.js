@@ -14,13 +14,12 @@ function App() {
       case 'DELETE_TODO':
         return state.filter(todo => todo.id !== action.payload.id)
       case 'TOGGLE_TODO':
-        state.map(todo => {
-          if(todo.id === action.payload.id) {
-            return {...todo, isCompleted: !todo.isCompleted}
+        return state.map(newState => {
+          if(newState.id === action.payload.id) {
+            return {...newState, isCompleted: !newState.isCompleted}
           }
           return state
         })
-        return state
       default:
         return state 
     }

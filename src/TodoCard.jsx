@@ -5,6 +5,7 @@ function TodoCard({ todos, dispatch }) {
         <div className='flex flex-col'>
             {todos.map(userTodo => (
                 <div key={userTodo.id}>
+                    {console.log(userTodo.isCompleted)}
                     {userTodo.isCompleted === true ? <p className='text-red-500'>{userTodo.name} </p> : <p>{userTodo.name} </p>}
                     <p>{userTodo.isCompleted}</p>
                     <button onClick={() => dispatch({ type: 'TOGGLE_TODO', payload: { id: userTodo.id } })}>Toggle</button>
