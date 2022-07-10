@@ -6,6 +6,7 @@ import TodoCard from './TodoCard';
 function App() {
 
   const [todo, setTodo] = useState('')
+  const [todoId, setTodoId] = useState(0)
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -18,7 +19,7 @@ function App() {
           if(newState.id === action.payload.id) {
             return {...newState, isCompleted: !newState.isCompleted}
           }
-          return state
+          return newState
         })
       default:
         return state 
@@ -26,12 +27,13 @@ function App() {
   }
 
   const handleSubmit = () => {
-    dispatch({ type: 'ADD_TODO', payload: {name: todo, id: Date.now(), isCompleted: false} })
+    setTodoId(prev => prev + 1)
+    dispatch({ type: 'ADD_TODO', payload: {name: todo, id: todoId, isCompleted: false} })
     setTodo('')
   }
 
   const [todos, dispatch] = useReducer(reducer, [])
-  
+
   return (
     <div className="w-screen">
       <div className='flex flex-col w-full items-center justify-center'>
