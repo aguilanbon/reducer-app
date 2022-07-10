@@ -13,6 +13,14 @@ function App() {
         return [...state, action.payload]
       case 'DELETE_TODO':
         return state.filter(todo => todo.id !== action.payload.id)
+      case 'TOGGLE_TODO':
+        state.map(todo => {
+          if(todo.id === action.payload.id) {
+            return {...todo, isCompleted: !todo.isCompleted}
+          }
+          return state
+        })
+        return state
       default:
         return state 
     }
@@ -24,7 +32,7 @@ function App() {
   }
 
   const [todos, dispatch] = useReducer(reducer, [])
-
+  
   return (
     <div className="w-screen">
       <div className='flex flex-col w-full items-center justify-center'>
